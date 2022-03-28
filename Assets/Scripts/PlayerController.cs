@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator anim;
+    public Collider2D coll;
     public float speed;
     public float jumpforce;
+    public LayerMask ground;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
     // 角色降落改变动画
     void SwitchAnim()
     {
+        //anim.SetBool("idle", false);
         if (anim.GetBool("jumping"))
         {
             if (rb.velocity.y < 0)
@@ -55,7 +57,12 @@ public class PlayerController : MonoBehaviour
                 // y轴没力了，触发降落
                 anim.SetBool("jumping", false);
                 anim.SetBool("falling", true);
-            }
+            } 
+        } else if (coll.IsTouchingLayers(ground))
+        {
+            //print("IsTouchingLayers");
+            anim.SetBool("falling", false);
+            anim.SetBool("idle", true);
         }
     }
 

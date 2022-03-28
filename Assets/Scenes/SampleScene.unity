@@ -1706,8 +1706,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1209161445}
   anim: {fileID: 1209161447}
+  coll: {fileID: 1209161444}
   speed: 500
   jumpforce: 400
+  ground:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!95 &1209161447
 Animator:
   serializedVersion: 3
@@ -1737,7 +1741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1212604289}
   - component: {fileID: 1212604288}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
