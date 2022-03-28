@@ -1,4 +1,5 @@
-/Build/
-/Library/
+/Build/PlaerDataCache/WebGL/
+# /Build/
+# /Library/
 /Logs/
-/Temp/
+# /Temp/
