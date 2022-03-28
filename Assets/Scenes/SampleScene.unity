@@ -1705,8 +1705,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1209161445}
+  anim: {fileID: 1209161447}
   speed: 500
-  jumpforce: 500
+  jumpforce: 400
 --- !u!95 &1209161447
 Animator:
   serializedVersion: 3

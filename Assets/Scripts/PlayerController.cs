@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Movement();
+        SwitchAnim();
     }
 
     // Movement
@@ -39,7 +41,21 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpforce * Time.deltaTime);
-            //anim.SetBool("jumping", true);
+            anim.SetBool("jumping", true);
+        }
+    }
+
+    // 角色降落改变动画
+    void SwitchAnim()
+    {
+        if (anim.GetBool("jumping"))
+        {
+            if (rb.velocity.y < 0)
+            {
+                // y轴没力了，触发降落
+                anim.SetBool("jumping", false);
+                anim.SetBool("falling", true);
+            }
         }
     }
 
