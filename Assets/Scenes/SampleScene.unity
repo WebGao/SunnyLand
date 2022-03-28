@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 885622785}
   m_Layer: 0
   m_Name: Cherry
-  m_TagString: Untagged
+  m_TagString: CollectionCherry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2416,10 +2416,11 @@ MonoBehaviour:
   anim: {fileID: 1209161447}
   coll: {fileID: 1209161448}
   speed: 200
-  jumpforce: 300
+  jumpforce: 400
   ground:
     serializedVersion: 2
     m_Bits: 128
+  cherry: 0
 --- !u!95 &1209161447
 Animator:
   serializedVersion: 3

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jumpforce;
     public LayerMask ground;
+    public int cherry;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +65,15 @@ public class PlayerController : MonoBehaviour
             //print("IsTouchingLayers");
             anim.SetBool("falling", false);
             anim.SetBool("idle", true);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "CollectionCherry")
+        {
+            Destroy(collision.gameObject);
+            cherry += 1;
         }
     }
 
