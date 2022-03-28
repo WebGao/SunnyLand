@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 1020681719}
   - component: {fileID: 1020681718}
   - component: {fileID: 1020681720}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1493,7 +1493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1106901751
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1573,6 +1573,7 @@ GameObject:
   - component: {fileID: 1209161444}
   - component: {fileID: 1209161446}
   - component: {fileID: 1209161447}
+  - component: {fileID: 1209161448}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1658,7 +1659,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08139944, y: -0.38779604}
+  m_Offset: {x: 0.022938728, y: -0.10759246}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1669,7 +1670,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.77771664, y: 1.2244079}
+  m_Size: {x: 0.74635315, y: 0.56990874}
   m_EdgeRadius: 0
 --- !u!50 &1209161445
 Rigidbody2D:
@@ -1706,7 +1707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1209161445}
   anim: {fileID: 1209161447}
-  coll: {fileID: 1209161444}
+  coll: {fileID: 1209161448}
   speed: 500
   jumpforce: 400
   ground:
@@ -1731,6 +1732,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &1209161448
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209161441}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.003519535, y: -0.57865065}
+  serializedVersion: 2
+  m_Radius: 0.38826782
 --- !u!1 &1212604287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1212604289}
   - component: {fileID: 1212604288}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
