@@ -45,6 +45,12 @@ TagManager:
   - name: Background
     uniqueID: 3962851553
     locked: 0
+  - name: Environment
+    uniqueID: 1785355485
+    locked: 0
   - name: Frontground
     uniqueID: 148849537
+    locked: 0
+  - name: Ground
+    uniqueID: 2248711387
     locked: 0
