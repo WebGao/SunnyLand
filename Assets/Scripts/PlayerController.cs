@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,9 +13,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask ground;
     public int cherry;
     public int jumpNumber = 0;
+    public Text cherryNum;
+
     // Start is called before the first frame update
     void Start()
     {
+        cherry = 0;
         //coll_head.sharedMaterial = new PhysicsMaterial2D() { friction = 0.0f, bounciness = 0.0f };
     }
 
@@ -71,12 +75,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // 收集Cherry
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "CollectionCherry")
         {
             Destroy(collision.gameObject);
             cherry += 1;
+            cherryNum.text = cherry.ToString();
         }
     }
 
