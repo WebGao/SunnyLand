@@ -7,10 +7,10 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator anim;
-    public Collider2D coll;
+    public Collider2D coll, coll_body;
     public float speed;
     public float jumpforce;
-    public LayerMask ground;
+    public LayerMask ground, cherryLayer;
     public int cherry;
     public int jumpNumber = 0;
     public Text cherryNum;
@@ -78,8 +78,9 @@ public class PlayerController : MonoBehaviour
     // 收集Cherry
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "CollectionCherry")
+        if (collision.tag == "CollectionCherry" && coll_body.IsTouchingLayers(cherryLayer))
         {
+            
             Destroy(collision.gameObject);
             cherry += 1;
             cherryNum.text = cherry.ToString();
