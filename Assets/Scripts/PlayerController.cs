@@ -7,10 +7,10 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator anim;
-    public Collider2D coll, coll_body;
+    public Collider2D coll_foot, coll_body;
     public float speed;
     public float jumpforce;
-    public LayerMask ground, cherryLayer;
+    public LayerMask ground, cherryLayer, frogLayer;
     public int cherry;
     public int jumpNumber = 0;
     public Text cherryNum;
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("jumping", false);
                 anim.SetBool("falling", true);
             } 
-        } else if (coll.IsTouchingLayers(ground))
+        } else if (coll_foot.IsTouchingLayers(ground))
         {
             //print("IsTouchingLayers");
             anim.SetBool("falling", false);
@@ -84,6 +84,18 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             cherry += 1;
             cherryNum.text = cherry.ToString();
+        }
+    }
+
+    // 与敌人战斗,碰撞发生时触发
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyFrog")
+        {
+            if (anim.GetBool("falling"))
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
 
