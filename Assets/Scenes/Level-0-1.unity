@@ -6558,8 +6558,8 @@ GameObject:
   - component: {fileID: 1623904592}
   - component: {fileID: 1623904594}
   - component: {fileID: 1623904593}
-  - component: {fileID: 1623904596}
   - component: {fileID: 1623904595}
+  - component: {fileID: 1623904596}
   m_Layer: 0
   m_Name: Frog
   m_TagString: EnemyFrog
@@ -6601,7 +6601,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1623904594
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6672,8 +6672,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &1623904596
-BoxCollider2D:
+--- !u!58 &1623904596
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6685,19 +6685,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0761894, y: -0.0761894}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.1875, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -0.06396282, y: -0.08528364}
   serializedVersion: 2
-  m_Size: {x: 1.5271924, y: 1.2042444}
-  m_EdgeRadius: 0
+  m_Radius: 0.60336864
 --- !u!1 &1718276635
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,21 +11,24 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jumpforce;
     public LayerMask ground, cherryLayer, frogLayer;
-    public int cherry;
+    public int cherry = 0;
     public int jumpNumber = 0;
     public Text cherryNum;
+    private bool isHurt = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        cherry = 0;
         //coll_head.sharedMaterial = new PhysicsMaterial2D() { friction = 0.0f, bounciness = 0.0f };
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Movement();
+        if (!isHurt)
+        {
+            Movement();
+        }
         SwitchAnim();
     }
 
@@ -65,13 +68,25 @@ public class PlayerController : MonoBehaviour
                 // y轴没力了，触发降落
                 anim.SetBool("jumping", false);
                 anim.SetBool("falling", true);
-            } 
-        } else if (coll_foot.IsTouchingLayers(ground))
+            }
+        }
+        else if (coll_foot.IsTouchingLayers(ground))
         {
             //print("IsTouchingLayers");
             anim.SetBool("falling", false);
             anim.SetBool("idle", true);
             jumpNumber = 0;
+        }
+        if (isHurt)
+        {
+            anim.SetBool("hurt", true);
+            anim.SetFloat("running", Mathf.Abs(0));
+            if (Mathf.Abs(rb.velocity.x) < 0.1)
+            {
+                isHurt = false;
+                anim.SetBool("hurt", false);
+                anim.SetBool("idle", true);
+            }
         }
     }
 
@@ -94,11 +109,22 @@ public class PlayerController : MonoBehaviour
         {
             if (anim.GetBool("falling"))
             {
+                // 踩敌人
                 Destroy(collision.gameObject);
                 rb.velocity = new Vector2(rb.velocity.x, jumpforce * Time.deltaTime);
                 anim.SetBool("jumping", true);
                 anim.SetBool("falling", false);
                 jumpNumber = 1;
+            } else if (transform.position.x < collision.gameObject.transform.position.x)
+            {
+                // 从左撞击敌人，被弹回去10距离，y不变
+                rb.velocity = new Vector2(-3, rb.velocity.y);
+                isHurt = true;
+            } else if (transform.position.x > collision.gameObject.transform.position.x)
+            {
+                // 从右撞击敌人，被弹回去10距离
+                rb.velocity = new Vector2(3, rb.velocity.y);
+                isHurt = true;
             }
         }
     }
