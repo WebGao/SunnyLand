@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour
     public float jumpforce;
     public LayerMask ground;
     public int cherry;
+    public int jumpNumber = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //coll_head.sharedMaterial = new PhysicsMaterial2D() { friction = 0.0f, bounciness = 0.0f };
     }
 
     // Update is called once per frame
@@ -40,11 +41,12 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(facedirection, 1, 1); // x改变，y、z不改变。
         }
         // 角色跳跃
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && jumpNumber < 2)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpforce * Time.deltaTime);
             anim.SetBool("jumping", true);
             anim.SetBool("falling", false);
+            jumpNumber += 1;
         }
     }
 
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour
             //print("IsTouchingLayers");
             anim.SetBool("falling", false);
             anim.SetBool("idle", true);
+            jumpNumber = 0;
         }
     }
 
