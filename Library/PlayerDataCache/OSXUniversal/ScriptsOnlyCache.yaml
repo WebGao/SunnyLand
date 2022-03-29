@@ -14,9 +14,14 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKEditorManager
     - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
+    - UnityEditor.Tilemaps.GridBrush
+    - UnityEditor.Tilemaps.GridBrushEditor
+    - UnityEditor.Tilemaps.GridPaintPaletteClipboard
+    - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
     - UnityEditor.Tilemaps.GridPalettes
+    - UnityEditor.Tilemaps.PaintableSceneViewGrid
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -36,7 +41,7 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/Level-0-1.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -906,5 +911,5 @@ ScriptsOnlyBuild:
     className: FabrikSolver2D
   platform: 2
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
+  - Assets/Scenes/Level-0-1.unity
   playerPath: "/Users/apple/Desktop/\u9879\u76EE/unity/SunnyLand/Build/SunnyLand.app"
