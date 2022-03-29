@@ -95,6 +95,10 @@ public class PlayerController : MonoBehaviour
             if (anim.GetBool("falling"))
             {
                 Destroy(collision.gameObject);
+                rb.velocity = new Vector2(rb.velocity.x, jumpforce * Time.deltaTime);
+                anim.SetBool("jumping", true);
+                anim.SetBool("falling", false);
+                jumpNumber = 1;
             }
         }
     }
