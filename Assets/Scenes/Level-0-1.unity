@@ -704,6 +704,11 @@ PolygonCollider2D:
       - {x: 0.30817413, y: -0.87908196}
       - {x: 0.40956116, y: -0.71516585}
       - {x: 0.44688797, y: -0.49848604}
+--- !u!58 &471906647 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6872466198056182871, guid: 026e12e77d5864639830b86852ebc108, type: 3}
+  m_PrefabInstance: {fileID: 6872466197117858495}
+  m_PrefabAsset: {fileID: 0}
 --- !u!61 &471906649 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 6872466198056182875, guid: 026e12e77d5864639830b86852ebc108, type: 3}
@@ -1580,6 +1585,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &739428067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 739428068}
+  m_Layer: 0
+  m_Name: Frogs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &739428068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739428067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1623904592}
+  m_Father: {fileID: 2030813622}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &796606793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6575,10 +6611,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623904591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.9, y: 3.03, z: 0.7248276}
+  m_LocalPosition: {x: -17.41, y: 0.64, z: 0.7248276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2030813622}
+  m_Father: {fileID: 739428068}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1623904593
@@ -7629,7 +7665,7 @@ Transform:
   m_LocalPosition: {x: -30.913532, y: -0.45589536, z: -0.7248276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1623904592}
+  - {fileID: 739428068}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7729,6 +7765,10 @@ PrefabInstance:
       propertyPath: coll_body
       value: 
       objectReference: {fileID: 471906646}
+    - target: {fileID: 6872466198056182873, guid: 026e12e77d5864639830b86852ebc108, type: 3}
+      propertyPath: coll_foot
+      value: 
+      objectReference: {fileID: 471906647}
     - target: {fileID: 6872466198056182873, guid: 026e12e77d5864639830b86852ebc108, type: 3}
       propertyPath: coll_head
       value: 

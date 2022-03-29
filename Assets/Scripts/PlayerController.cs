@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public int cherry = 0;
     public int jumpNumber = 0;
     public Text cherryNum;
-    private bool isHurt = false;
+    private bool isHurt = false, isTap = false;
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +87,13 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("hurt", false);
                 anim.SetBool("idle", true);
             }
+        } else if (isTap)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpforce * Time.deltaTime);
+            anim.SetBool("jumping", true);
+            anim.SetBool("falling", false);
+            jumpNumber = 1;
+            isTap = false;
         }
     }
 
@@ -107,23 +114,21 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyFrog")
         {
+            //print("OnCollisionEnter2D");
             if (anim.GetBool("falling"))
             {
                 // 踩敌人
                 Destroy(collision.gameObject);
-                rb.velocity = new Vector2(rb.velocity.x, jumpforce * Time.deltaTime);
-                anim.SetBool("jumping", true);
-                anim.SetBool("falling", false);
-                jumpNumber = 1;
-            } else if (transform.position.x < collision.gameObject.transform.position.x)
+                isTap = true;
+            } else if (transform.position.x < collision.gameObject.transform.position.x && collision.gameObject)
             {
                 // 从左撞击敌人，被弹回去10距离，y不变
-                rb.velocity = new Vector2(-3, rb.velocity.y);
+                rb.velocity = new Vector2(-5, rb.velocity.y);
                 isHurt = true;
-            } else if (transform.position.x > collision.gameObject.transform.position.x)
+            } else if (transform.position.x > collision.gameObject.transform.position.x && collision.gameObject)
             {
                 // 从右撞击敌人，被弹回去10距离
-                rb.velocity = new Vector2(3, rb.velocity.y);
+                rb.velocity = new Vector2(5, rb.velocity.y);
                 isHurt = true;
             }
         }
