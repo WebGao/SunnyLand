@@ -5,8 +5,11 @@ using UnityEngine;
 public class EnemyFrog : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator anim;
+    private Collider2D coll;
+    public LayerMask ground;
     public Transform leftPoint, rightPoint;
-    public float speed;
+    public float speed, jumpForce;
     private float leftPointX, rightPointX;
     private bool faceLeft = true;
 
@@ -14,6 +17,8 @@ public class EnemyFrog : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        coll = GetComponent<Collider2D>();
         transform.DetachChildren(); // 若是不添加，left和right跟着frog移动
         leftPointX = leftPoint.position.x;
         rightPointX = rightPoint.position.x;
@@ -31,16 +36,25 @@ public class EnemyFrog : MonoBehaviour
     {
         if (faceLeft)
         {
-            rb.velocity = new Vector2(-speed * Time.deltaTime, rb.velocity.y);
-            if (transform.position.x < leftPointX)
+            if (coll.IsTouchingLayers(ground))
+            {
+                rb.velocity = new Vector2(-speed * Time.deltaTime, jumpForce);
+                anim.SetBool("jumping", true);
+            }
+            if (transform.position.x < leftPointX && coll.IsTouchingLayers(ground))
             {
                 transform.localScale = new Vector3(-1, 1, 1);
                 faceLeft = false;
             }
         } else
         {
-            rb.velocity = new Vector2(speed * Time.deltaTime, rb.velocity.y);
-            if (transform.position.x > rightPointX)
+            if (coll.IsTouchingLayers(ground))
+            {
+                rb.velocity = new Vector2(speed * Time.deltaTime, jumpForce);
+                anim.SetBool("jumping", true);
+            }
+            //rb.velocity = new Vector2(speed * Time.deltaTime, jumpForce * Time.deltaTime);
+            if (transform.position.x > rightPointX && coll.IsTouchingLayers(ground))
             {
                 transform.localScale = new Vector3(1, 1, 1);
                 faceLeft = true;
