@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
     void SwitchAnim()
     {
         //anim.SetBool("idle", false);
+        if (rb.velocity.y < 0 && !coll_foot.IsTouchingLayers(ground))
+        {
+            // 触发降落
+            anim.SetBool("falling", true);
+        }
         if (anim.GetBool("jumping"))
         {
             if (rb.velocity.y < 0)
