@@ -29,7 +29,8 @@ public class EnemyFrog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        // Movement(); // Animator event调用
+        SwitchAnim();
     }
 
     void Movement()
@@ -46,7 +47,8 @@ public class EnemyFrog : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
                 faceLeft = false;
             }
-        } else
+        }
+        else
         {
             if (coll.IsTouchingLayers(ground))
             {
@@ -58,6 +60,27 @@ public class EnemyFrog : MonoBehaviour
             {
                 transform.localScale = new Vector3(1, 1, 1);
                 faceLeft = true;
+            }
+        }
+    }
+
+    void SwitchAnim()
+    {
+        if (anim.GetBool("jumping"))
+        {
+            if (rb.velocity.y < 0)
+            {
+                // 触发降落
+                anim.SetBool("jumping", false);
+                anim.SetBool("falling", true);
+            }
+        }
+        else if (anim.GetBool("falling"))
+        {
+            if (coll.IsTouchingLayers(ground))
+            {
+                // 触发idle
+                anim.SetBool("falling", false);
             }
         }
     }
