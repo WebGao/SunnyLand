@@ -14,6 +14,7 @@ public class EnemyFrog : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        transform.DetachChildren(); // 若是不添加，left和right跟着frog移动
         leftPointX = leftPoint.position.x;
         rightPointX = rightPoint.position.x;
         Destroy(leftPoint.gameObject);
